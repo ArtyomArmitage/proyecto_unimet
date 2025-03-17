@@ -55,7 +55,7 @@ class Estadísticas():
                 experimentos.append(receta)
         experimentos.sort(key=lambda x: x.not_done, reverse=True)
         if experimentos==[]:
-            print("No existe un experimento que no se haya realizado por falta de reactivos.")
+            print("      No existe un experimento que no se haya realizado por falta de reactivos.")
         else:
             for experimento in experimentos:
                 print(f"    {experimento.name}. Nro de veces no realizado: {experimento.not_done}")
@@ -67,6 +67,9 @@ class Estadísticas():
         for reactivo in reactivos:
             if reactivo.errores!=[]:
                 check.append(reactivo)
+            else:
+                print("      Ningún reactivo se ha desperdiciado")
+                return
         for reactivo in check:
             for i in reactivo.errores:
                 percentage=((sum(i["cantidades"])/len(i["cantidades"]))/i["teórico"])*100
